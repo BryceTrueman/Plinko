@@ -1,0 +1,303 @@
+/*
+			Test 1
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 100000
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: -1000
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 3
+			Have a nice day!
+			Press any key to continue . . .
+
+			Test 2
+
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 1
+			Please enter your starting position: -10
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 1
+			Please enter your starting position: 1000
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 1
+			Please enter your starting position: 3
+			3
+			2.5
+			2
+			1.5
+			1
+			0.5
+			1
+			1.5
+			1
+			0.5
+			1
+			1.5
+			1
+			You won $500
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program:
+
+			Test 3
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 2
+			Please enter the starting position you'd like to drop your chips: -5
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program: 2
+			Please enter the starting position you'd like to drop your chips: 4
+			Please enter the number of chips youd like to drop: 1456
+			You won a total of: 3647500
+			With an average $ per chip of: 2505
+
+			Please enter 1. to drop one chip,
+			2. to drop multiple chips,
+			or 3. to quit the program:
+*/
+
+#include <iostream>
+#include <ctime>
+#include <cmath>
+
+using namespace std;
+
+int main()
+
+{
+	srand(time(0));
+	int game_type = 1;
+	while (game_type != 3)
+	{
+		cout << "" << endl;
+		cout << "Please enter 1. to drop one chip," << endl;
+		cout << "2. to drop multiple chips," << endl;
+		cout << "or 3. to quit the program: ";
+		cin >> game_type;
+
+
+		if (game_type == 3)
+		{
+			cout << "Have a nice day!" << endl;
+		}
+
+		int num_games = 0;
+		int num_chips = 0;
+		double starting_position = 0;
+		double current_position = starting_position;
+		int total_winnings = 0;
+		const int prize0 = 100;
+		const int prize1 = 500;
+		const int prize2 = 1000;
+		const int prize3 = 0;
+		const int prize4 = 10000;
+		const int prize5 = 0;
+		const int prize6 = 1000;
+		const int prize7 = 500;
+		const int prize8 = 100;
+		int winnings = 0;
+		double average_winnings = 0;
+
+
+		if (game_type == 2)
+		{
+			
+			cout << "Please enter the starting position you'd like to drop your chips: ";
+			cin >> starting_position;
+			if (starting_position >= 0 && starting_position <= 8)
+			{
+				cout << "Please enter the number of chips youd like to drop: ";
+				cin >> num_chips;
+
+				if (num_chips > 0)
+				{
+					for (int num_games = 0; num_games < num_chips; num_games++)
+					{
+						 current_position = starting_position;
+						for (int rows = 12; rows > 0; rows--)
+						{
+							double movement = .5;
+							int randomnumber = rand() % 2;
+							if (current_position == 0)
+							{
+								(current_position = current_position + movement);
+							}
+							else if (current_position == 7)
+							{
+								(current_position = current_position - movement);
+							}
+							else if (randomnumber == 0)
+							{
+								(current_position = current_position - movement);
+							}
+							else //(randomnumber == 1)
+							{
+								(current_position = current_position + movement);
+							}
+						}
+						if (current_position == 0)
+						{
+							winnings = prize0;
+							
+						}
+						if (current_position == 1)
+						{
+							winnings = prize1;
+							
+						}
+						if (current_position == 2)
+						{
+							winnings = prize2;
+							
+						}
+						if (current_position == 3)
+						{
+							winnings = prize3;
+							
+						}
+						if (current_position == 4)
+						{
+							winnings = prize4;
+							
+						}
+						if (current_position == 5)
+						{
+							winnings = prize5;
+							
+						}
+						if (current_position == 6)
+						{
+							winnings = prize6;
+							
+						}
+						if (current_position == 7)
+						{
+							winnings = prize7;
+
+						}
+						if (current_position == 8)
+						{
+							winnings = prize8;
+							
+						}
+						total_winnings = total_winnings + winnings;
+					}
+					average_winnings = total_winnings / num_chips;
+					cout << "You won a total of: " << total_winnings << endl;
+					cout << "With an average $ per chip of: " << average_winnings << endl;
+				}
+			}
+
+		}
+
+
+
+
+		if (game_type == 1)
+		{
+			
+				cout << "Please enter your starting position: ";
+				cin >> starting_position;
+				
+				if (starting_position >= 0 && starting_position <= 8)
+				{
+					cout << starting_position << endl;
+
+
+					double current_position = starting_position;
+
+					for (int rows = 12; rows > 0; rows--)
+					{
+						double movement = .5;
+
+						int randomnumber = rand() % 2;
+						if (current_position == 0)
+						{
+							(current_position = current_position + movement);
+							cout << current_position << endl;
+						}
+						else if (current_position == 8)
+						{
+
+							(current_position = current_position - movement);
+							cout << current_position << endl;
+						}
+						else if (randomnumber == 0)
+						{
+							(current_position = current_position - movement);
+							cout << current_position << endl;
+						}
+						else //(randomnumber == 1)
+						{
+
+							(current_position = current_position + movement);
+							cout << current_position << endl;
+						}
+					}
+
+
+
+
+
+
+					if (current_position == 0)
+					{
+						cout << "You won $" << prize0 << endl;
+					}
+					if (current_position == 1)
+					{
+						cout << "You won $" << prize1 << endl;
+					}
+					if (current_position == 2)
+					{
+						cout << "You won $" << prize2 << endl;
+					}
+					if (current_position == 3)
+					{
+						cout << "You won $" << prize3 << endl;
+					}
+					if (current_position == 4)
+					{
+						cout << "You won $" << prize4 << endl;
+					}
+					if (current_position == 5)
+					{
+						cout << "You won $" << prize5 << endl;
+					}
+					if (current_position == 6)
+					{
+						cout << "You won $" << prize6 << endl;
+					}
+					if (current_position == 7)
+					{
+						cout << "You won $" << prize7 << endl;
+					}
+					if (current_position == 8)
+					{
+						cout << "You won: " << prize8 << endl;
+					}
+				}
+			}
+
+
+
+
+	}
+	system("pause");
+	return 0;
+}
